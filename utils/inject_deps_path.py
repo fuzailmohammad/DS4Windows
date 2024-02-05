@@ -17,8 +17,7 @@ pattern = re.compile("^DS4Windows/[0-9]+\.[0-9]+\.[0-9]+$")
 with open(tempfile) as input_file:
   temp_json = json.load(input_file)
   for k, v in temp_json["libraries"].items():
-    test_match = re.match(pattern, k)
-    if test_match:
+    if test_match := re.match(pattern, k):
       temp_json["libraries"][k]["path"] = "./"
       break
 
